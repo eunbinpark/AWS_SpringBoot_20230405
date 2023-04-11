@@ -1,10 +1,16 @@
 package com.web.study.domain.entity;
 
+import java.time.LocalDate;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @ToString
 public class Lecture {
@@ -12,4 +18,5 @@ public class Lecture {
 	private String ltm_name;
 	private int ltm_price;
 	private int itm_id;
+	private Instructor instructor;
 }
