@@ -1,9 +1,11 @@
 package com.web.study.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,14 +17,6 @@ import com.web.study.dto.DataResponseDto;
 import com.web.study.dto.ResponseDto;
 import com.web.study.dto.request.BasicTestDto;
 
-import lombok.Data;
-
-@Data
-class Params {
-	private int age;
-	private String name;
-}
-
 @RestController
 public class BasicRestController {
 
@@ -31,11 +25,13 @@ public class BasicRestController {
 	public ResponseEntity<? extends ResponseDto> read(BasicTestDto basicTestDto) {
 		
 		String userInfo = basicTestDto.getName() + "(" + basicTestDto.getAge() + ")";
+		
 		return ResponseEntity.ok().body(DataResponseDto.of(userInfo));
 	}
 	
+	@CrossOrigin
 	@GetMapping("/read2/{id}")
-	public ResponseEntity<? extends ResponseDto> read2(@PathVariable("id") int userId){
+	public ResponseEntity<? extends ResponseDto> read2(@PathVariable int id) {
 		Map<Integer, String> userMap = new HashMap<>();
 		
 		userMap.put(1, "김준일");
@@ -44,7 +40,8 @@ public class BasicRestController {
 		userMap.put(4, "김준사");
 		userMap.put(5, "김준오");
 		
-		return ResponseEntity.ok().body(DataResponseDto.of(userMap.get(userId)));
+		
+		return ResponseEntity.ok().body(DataResponseDto.of(userMap.get(id)));
 	}
 	
 	// Post요청의 데이터 처리
@@ -55,3 +52,15 @@ public class BasicRestController {
 		return ResponseEntity.created(null).body(DataResponseDto.of(basicTestDto));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

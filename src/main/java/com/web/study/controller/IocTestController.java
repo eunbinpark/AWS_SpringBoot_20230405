@@ -6,21 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.study.IocAndDi.IocTest;
 import com.web.study.IocAndDi.IocTest2;
-import com.web.study.IocAndDi.TestA;
-
-import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class IocTestController {
 	
-	private final IocTest iocTest;
-	private final IocTest2 iocTest2;
-	
-//	public IocTestController(IocTest iocTest, IocTest2 iocTest2) {
-//		this.iocTest = iocTest;
-//		this.iocTest2 = iocTest2;
-//	}
+	@Autowired
+	private IocTest iocTest;
+	@Autowired
+	private IocTest2 iocTest2;
 	
 	@GetMapping("/ioc/test")
 	public Object test() {
@@ -28,4 +22,14 @@ public class IocTestController {
 		iocTest2.run();
 		return null;
 	}
+	
 }
+
+
+
+
+
+
+
+
+

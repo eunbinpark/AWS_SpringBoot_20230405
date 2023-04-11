@@ -30,4 +30,15 @@ public class DataResponseDto<T> extends ResponseDto {
 	public static <T> DataResponseDto<T> empty() {
 		return new DataResponseDto<T>(null);
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+

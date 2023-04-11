@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class IocTest2 {
 	
-	@Qualifier("t2")
+	@Qualifier("testC")
 	@Autowired
 	private Test test;
 	
@@ -19,4 +19,6 @@ public class IocTest2 {
 		test.printTest();
 		System.out.println("IoCTest2 출력!");
 	}
+	
+	
 }

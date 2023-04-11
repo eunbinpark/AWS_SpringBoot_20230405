@@ -9,4 +9,5 @@ public class TestA implements Test {
 	public void printTest() {
 		System.out.println("TestA 클래스!!!");
 	}
+	
 }

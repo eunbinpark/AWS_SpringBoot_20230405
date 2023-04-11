@@ -7,16 +7,16 @@ import lombok.ToString;
 
 @Setter
 @ToString
-public class LectureReqDto {
+public class InstructorReqDto {
 	private String lectureName;
 	private int lecturePrice;
-	private int lectureId;
+	private int instructorId;
 	
 	public Lecture toEntity() {
 		return Lecture.builder()
-				.lecture_name(lectureName)
-				.lecture_price(lecturePrice)
-				.lecturer_id(lectureId)
+				.ltm_name(lectureName)
+				.ltm_price(lecturePrice)
+				.itm_id(instructorId)
 				.build();
 	}
 }

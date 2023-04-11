@@ -9,7 +9,8 @@ import com.web.study.IocAndDi.TestC;
 public class BeanConfig {
 
 	@Bean
-	public TestC testc() {
+	public TestC testC() {
 		return new TestC();
 	}
+	
 }
