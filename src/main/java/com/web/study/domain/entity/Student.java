@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-//@Alias("S1")
 public class Student {
 	private int sdm_id;
 	private String sdm_name;

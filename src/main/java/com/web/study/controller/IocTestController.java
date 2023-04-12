@@ -9,7 +9,7 @@ import com.web.study.IocAndDi.IocTest2;
 
 @RestController
 //@RequiredArgsConstructor
-public class IocTestController {
+public class IoCTestController {
 	
 	@Autowired
 	private IocTest iocTest;

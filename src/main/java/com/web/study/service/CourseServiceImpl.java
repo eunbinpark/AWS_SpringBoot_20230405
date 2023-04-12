@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.text.html.parser.Entity;
-
 import org.springframework.stereotype.Service;
 
-import com.web.study.domain.entity.Course;
 import com.web.study.dto.request.course.CourseReqDto;
 import com.web.study.dto.response.CourseRespDto;
 import com.web.study.repository.CourseRepository;
@@ -26,12 +23,14 @@ public class CourseServiceImpl implements CourseService {
 	public void registeCourse(CourseReqDto courseReqDto) {
 		courseRepository.saveCourse(courseReqDto.toEntity());
 	}
+	
 	@Override
 	public List<CourseRespDto> getCourseAll() {
 		List<CourseRespDto> dtos = new ArrayList<>();
-		courseRepository.getCourseAll().forEach(entity ->{
+		courseRepository.getCourseAll().forEach(entity -> {
 			dtos.add(entity.toDto());
 		});
+		
 		return dtos;
 	}
 	
@@ -49,3 +48,6 @@ public class CourseServiceImpl implements CourseService {
 		return dtos;
 	}
 }
+
+
+

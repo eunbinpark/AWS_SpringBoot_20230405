@@ -2,7 +2,6 @@ package com.web.study.domain.entity;
 
 import java.time.LocalDate;
 
-import com.web.study.dto.request.course.CourseReqDto;
 import com.web.study.dto.response.CourseRespDto;
 
 import lombok.AllArgsConstructor;
@@ -50,3 +49,7 @@ public class Course {
 				.build();
 	}
 }
+
+
+
+

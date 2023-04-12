@@ -10,7 +10,6 @@ import com.web.study.dto.DataResponseDto;
 import com.web.study.dto.ResponseDto;
 import com.web.study.dto.request.course.CourseReqDto;
 import com.web.study.service.CourseService;
-import com.web.study.service.LectureService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 public class CourseController {
 
 	private final CourseService courseService;
-	private final LectureService lectureService;
 	
 	@PostMapping("/course")
 	public ResponseEntity<? extends ResponseDto> registeCourse(@RequestBody CourseReqDto courseReqDto) {
@@ -35,8 +33,13 @@ public class CourseController {
 	
 	@GetMapping("/search/courses")
 	public ResponseEntity<? extends ResponseDto> searchCourse(int type, String searchValue) {
-		
+		System.out.println(searchValue);
 		return ResponseEntity.ok().body(DataResponseDto.of(courseService.searchCourse(type, searchValue)));
 	}
-	
 }
+
+
+
+
+
+

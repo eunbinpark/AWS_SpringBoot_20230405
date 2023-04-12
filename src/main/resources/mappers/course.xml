@@ -34,9 +34,9 @@
 		<collection property="student" resultMap="student"></collection>
 	</resultMap>
 	
-	<insert id="saveCourse" parameterType="Course">
+	<insert id="saveCourse" parameterType="com.web.study.domain.entity.Course">
 		insert into course_mst
-		values (0, #{lecture_id}, #{student_id}, #{registe_date})
+		values (0, #{ltm_id}, #{sdm_id}, #{registe_date})
 	</insert>
 	
 	<select id="getCourseAll" resultMap="course">
@@ -96,3 +96,8 @@
 		</if>
 	</select>
 </mapper>
+
+
+
+
+
