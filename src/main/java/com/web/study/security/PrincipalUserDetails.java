@@ -15,13 +15,13 @@ import lombok.Getter;
 @Getter
 public class PrincipalUserDetails implements UserDetails {
 
-	private static final long serialVersionUID = -5146019986318159419L;
+	private static final long serialVersionUID = -1913596722176708482L;
 	
 	private int userId;
 	private String username;
 	private String password;
 	private List<String> roles;
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -66,5 +66,4 @@ public class PrincipalUserDetails implements UserDetails {
 		return true;
 	}
 
-	
 }

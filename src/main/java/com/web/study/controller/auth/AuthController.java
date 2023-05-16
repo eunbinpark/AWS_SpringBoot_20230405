@@ -1,4 +1,4 @@
-package com.web.study.controller.advice.auth;
+package com.web.study.controller.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,15 +20,22 @@ public class AuthController {
 	private final AuthService authService;
 	
 	@PostMapping("/auth/register")
-	public ResponseEntity<? extends ResponseDto> registe(@RequestBody RegisteUserReqDto registeUserReqDto){
+	public ResponseEntity<? extends ResponseDto> registe(@RequestBody RegisteUserReqDto registeUserReqDto) {
 		authService.duplicatedUsername(registeUserReqDto);
 		authService.registeUser(registeUserReqDto);
 		return ResponseEntity.ok().body(ResponseDto.ofDefault());
 	}
 	
 	@PostMapping("/auth/login")
-	public ResponseEntity<? extends ResponseDto> login(@RequestBody LoginReqDto loginReqDto){
+	public ResponseEntity<? extends ResponseDto> login(@RequestBody LoginReqDto loginReqDto) {
 		
 		return ResponseEntity.ok().body(DataResponseDto.of(authService.login(loginReqDto)));
 	}
+	
 }
+
+
+
+
+
+

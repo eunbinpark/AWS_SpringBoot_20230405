@@ -15,11 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 @Aspect
 @Component
 public class TimerAop {
-	
-//	private final Logger logger = LogManager.getLogger(TimerAop.class);
 
+//	private final Logger logger = LogManager.getLogger(TimerAop.class);
+	
 	// 접근지정자 public은 생략 가능!
-	@Pointcut("execution(* com.web.study..*.*(..))")
+	@Pointcut("execution(* com.web.study..*.*(int))")
 	private void pointCut() {}
 	
 	@Pointcut("@annotation(com.web.study.aop.annotation.TimerAspect)")
@@ -27,21 +27,24 @@ public class TimerAop {
 	
 	@Around("annotationPointCut()&&pointCut()")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-		
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		
-		// 전처리
-		Object logic = joinPoint.proceed();	// proceed = 메소드 호출
-		System.out.println(logic);
-		// 후처리
+		//전처리
+		Object logic = joinPoint.proceed();	//proceed = 메소드 호출
+		//후처리
 		
 		stopWatch.stop();
-		log.info("Time >>> {}.{} : {}.초", 
-				joinPoint.getSignature().getDeclaringTypeName(), 
+		log.info("[ Time ] >>> {}.{}: {}초", 
+				joinPoint.getSignature().getDeclaringTypeName(),
 				joinPoint.getSignature().getName(),
 				stopWatch.getTotalTimeSeconds());
-		
-		return logic; 
+		return logic;
 	}
 }
+
+
+
+
+
+

@@ -20,15 +20,15 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
-	 
+	
 	private List<Authority> authorities;
 	
 	public PrincipalUserDetails toPrincipal() {
 		List<String> roles = new ArrayList<>();
 		
-		 authorities.forEach(authority -> {
-			 roles.add(authority.getRole().getRole_name());
-		 });
+		authorities.forEach(authority -> {
+			roles.add(authority.getRole().getRole_name());
+		});
 		
 		return PrincipalUserDetails.builder()
 				.userId(user_id)
@@ -38,3 +38,15 @@ public class User {
 				.build();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

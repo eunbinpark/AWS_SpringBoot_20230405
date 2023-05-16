@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.study.aop.annotation.CheckNameAspect;
 import com.web.study.aop.annotation.ParamsAspect;
 import com.web.study.aop.annotation.TimerAspect;
 import com.web.study.aop.annotation.ValidAspect;
@@ -33,18 +32,15 @@ public class CourseController {
 	
 	@PostMapping("/course")
 	public ResponseEntity<? extends ResponseDto> registeCourse(@RequestBody CourseReqDto courseReqDto) {
+		
 		courseService.registeCourse(courseReqDto);
+		
 		return ResponseEntity.ok().body(ResponseDto.ofDefault());
 	}
 	
 	@TimerAspect
 	@GetMapping("/courses")
 	public ResponseEntity<? extends ResponseDto> getCourseAll() {
-		
-		if (1 == 1) {
-			throw new CustomException("예외 만들기");
-		}
-		
 		return ResponseEntity.ok().body(DataResponseDto.of(courseService.getCourseAll()));
 	}
 	
@@ -53,16 +49,13 @@ public class CourseController {
 	@GetMapping("/search/courses")
 	public ResponseEntity<? extends ResponseDto> searchCourse(@Valid SearchCourseReqDto searchCourseReqDto, BindingResult bindingResult) {
 		
-//		if(bindingResult.hasErrors()) {
-//			Map<String, String> errorMap = new HashMap<>();
-//			
-//			bindingResult.getFieldErrors().forEach(error -> {
-//				errorMap.put(error.getField(), error.getDefaultMessage());
-//			});
-//			
-//			throw new CustomException("유효성 검사 실패", errorMap);
-//		}
-		
-		return ResponseEntity.ok().body(DataResponseDto.of(courseService.searchCourse(searchCourseReqDto.getType(), searchCourseReqDto.getSearchValue())));
+		return ResponseEntity.ok().body(DataResponseDto.of(
+				courseService.searchCourse(searchCourseReqDto.getType(), searchCourseReqDto.getSearchValue())));
 	}
 }
+
+
+
+
+
+

@@ -15,7 +15,7 @@ import com.web.study.exception.CustomException;
 @Aspect
 @Component
 public class ValidationAop {
-
+	
 	@Pointcut("@annotation(com.web.study.aop.annotation.ValidAspect)")
 	private void pointCut() {}
 	
@@ -24,13 +24,13 @@ public class ValidationAop {
 		
 		BeanPropertyBindingResult bindingResult = null;
 		
-		for (Object obj : joinPoint.getArgs()) {
+		for(Object obj : joinPoint.getArgs()) {
 			if(obj.getClass() == BeanPropertyBindingResult.class) {
 				bindingResult = (BeanPropertyBindingResult) obj;
 			}
 		}
 		
-		if (bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {
 			Map<String, String> errorMap = new HashMap<>();
 			
 			bindingResult.getFieldErrors().forEach(error -> {
@@ -38,8 +38,20 @@ public class ValidationAop {
 			});
 			
 			throw new CustomException("유효성 검사 실패", errorMap);
+			
 		}
+		
 		
 		return joinPoint.proceed();
 	}
 }
+
+
+
+
+
+
+
+
+
+

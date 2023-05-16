@@ -22,21 +22,25 @@ public class ParamsAop {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		CodeSignature codeSignature = (CodeSignature)joinPoint.getSignature();
+		CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
 		String[] parameterNames = codeSignature.getParameterNames();
-		
 		Object[] args = joinPoint.getArgs();
 		
 		for(int i = 0; i < parameterNames.length; i++) {
-			if (i != 0) {
+			if(i != 0) {
 				builder.append(", ");
 			}
-			builder.append(parameterNames[i] + ":" + args[i]);
+			builder.append(parameterNames[i] + ": " + args[i]);
 		}
 		
-		log.info("[ params ] >>> {}",
-				builder.toString());
+		log.info("[ Params ] >>> {}", builder.toString());
 		
 		return joinPoint.proceed();
 	}
 }
+
+
+
+
+
+

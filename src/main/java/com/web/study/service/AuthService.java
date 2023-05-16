@@ -7,7 +7,7 @@ import com.web.study.dto.response.auth.JwtTokenRespDto;
 public interface AuthService {
 	
 	public void registeUser(RegisteUserReqDto registeUserReqDto);
-	public void duplicateUsername(RegisteUserReqDto registeUserReqDto);
+	public void duplicatedUsername(RegisteUserReqDto registeUserReqDto);
 	
 	public JwtTokenRespDto login(LoginReqDto loginReqDto);
 }

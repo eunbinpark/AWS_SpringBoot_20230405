@@ -15,17 +15,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-	private final UserRepository UserRepository;
+	private final UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("호출?");
-		User userEntity = UserRepository.findUserByUsername(username);
-		System.out.println(userEntity);
-		if (userEntity == null) {
-			throw new CustomException("사용자 정보를 다시 확인해주세요.");
+		User userEntity = userRepository.findUserByUsername(username);
+		
+		if(userEntity == null) {
+			throw new CustomException("사용자 정보를 다시 확인해주세요");
 		}
 		
 		return userEntity.toPrincipal();
 	}
+
 }
+
+
+
+
